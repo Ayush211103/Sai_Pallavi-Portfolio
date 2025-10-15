@@ -17,8 +17,6 @@
     <meta property="og:type" content="website">
 
     <!-- Favicon Placeholder -->
-    <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>"> -->
-    <!-- <link rel="icon" href="./sai_favicon-removebg-preview.png" type="image/png"> -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫶🏼</text></svg>">
 
 
@@ -62,6 +60,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
     <style>
+        /* Global Fix: Aggressive containment for stubborn mobile overflow/AOS issues */
+        body, html {
+            overflow-x: hidden !important; /* Final guarantee to clip overflow */
+            width: 100% !important;        /* Ensure root elements define the width boundary */
+            min-width: 0;
+        }
+        * {
+            max-width: 100% !important; /* Prevents any child element from forcing page expansion */
+            box-sizing: border-box;
+        }
+        
         /* Custom CSS for smooth scroll and styling */
         .scrolled {
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -100,17 +109,28 @@
             transform: scale(1.03);
             filter: brightness(0.85);
         }
+        img {
+          max-width: 100%; /* Prevents horizontal overflow from large images */
+          height: auto;
+        }
     </style>
 </head>
 
 <body class="bg-primary-light text-text-dark dark:bg-primary-dark dark:text-text-light font-sans transition-colors duration-500">
 
-    <!-- Sticky Header & Navigation -->
-    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Logo/Name -->
-            <a href="#hero" class="text-3xl font-display font-semibold bg-gray-300 rounded inline-block  text-accent tracking-wider">
-                <img src="./sai pallavi autograph.png" alt="Sai Pallavi Logo" class="h-10 inline-block mr-2">            </a>
+<!-- 
+    RESTORED HEADER WITH OVERFLOW FIXES:
+    1. Outer div sets overflow-hidden.
+    2. Inner div uses negative margins (mx-[-0.5rem]) to absorb fractional pixel overflow 
+       caused by buttons and padding on small screens.
+-->
+<header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="w-full max-w-7xl mx-auto py-4 overflow-hidden">
+        <div class="flex justify-between items-center px-4 sm:px-4 mx-[-0.5rem]"> 
+            <a href="#hero" class="text-3xl font-display font-semibold bg-gray-300 rounded inline-block text-accent tracking-wider">
+                <!-- Using a placeholder for the image source to make it runnable -->
+                <img src="./sai pallavi autograph.png" alt="Sai Pallavi Logo" class="h-10 inline-block mr-2">
+            </a>
 
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-8 text-lg font-medium ml-auto mr-8">
@@ -122,9 +142,8 @@
             </nav>
 
             <!-- Menu Button & Dark Mode Toggle -->
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-2 md:space-x-4">
                 <button id="modeToggle" class="p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition duration-300" aria-label="Toggle dark and light mode">
-                    <!-- Icon will be set by JS -->
                     <i id="modeIcon" class="fas fa-sun text-xl"></i>
                 </button>
                 <button id="menuToggle" class="md:hidden p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition duration-300" aria-label="Open mobile menu">
@@ -132,76 +151,75 @@
                 </button>
             </div>
         </div>
+    </div>
+    <!-- Mobile Menu -->
+    <nav id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-primary-light dark:bg-primary-dark shadow-lg transition-all duration-300 p-4 border-t border-zinc-200 dark:border-zinc-700">
+        <a href="#about" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">About</a>
+        <a href="#portfolio" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Gallery</a>
+        <a href="#showreel" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Showreel</a>
+        <a href="#achievements" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Work</a>
+        <a href="#contact" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Contact</a>
+    </nav>
+</header>
+    
+<main class="w-full overflow-hidden">
+    <!-- 
+        1. Hero Section 
+        FIX: Responsive padding (p-4 for mobile, md:p-20 for desktop) 
+    -->
+    <section id="hero" class="relative h-screen flex items-end p-4 md:p-20 justify-center bg-hero-img bg-cover bg-center text-white" data-aos="fade">
+        <img src="./_.jpeg" alt="Sai Pallavi Hero Shot" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative text-center p-6 max-w-full sm:max-w-4xl mx-auto">
+            <h1 class="text-6xl sm:text-8xl font-display font-bold mb-4 tracking-tight" data-aos="fade-up" data-aos-delay="500">
+                Sai Pallavi ❤️
+            </h1>
+            <p class="text-xl sm:text-2xl font-medium tracking-widest uppercase mb-8" data-aos="fade-up" data-aos-delay="700">
+                Model | Actress
+            </p>
+            <a href="#portfolio" class="inline-block px-8 py-4 bg-accent hover:bg-rose-600 text-white font-semibold uppercase tracking-wider rounded-lg transition duration-300 shadow-xl" data-aos="fade-up" data-aos-delay="900">
+                View Portfolio
+            </a>
+        </div>
+    </section>
 
-        <!-- Mobile Menu (Hidden by default) -->
-        <nav id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-primary-light dark:bg-primary-dark shadow-lg transition-all duration-300 p-4 border-t border-zinc-200 dark:border-zinc-700">
-            <a href="#about" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">About</a>
-            <a href="#portfolio" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Gallery</a>
-            <a href="#showreel" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Showreel</a>
-            <a href="#achievements" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Work</a>
-            <a href="#contact" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Contact</a>
-        </nav>
-    </header>
-
-    <main>
-        <!-- 1. Hero Section -->
-        <section id="hero" class="relative h-screen flex items-end p-20 justify-center bg-hero-img bg-cover bg-center text-white" data-aos="fade">
-            <img src="./_.jpeg" alt="Sai Pallavi Hero Shot" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black opacity-40"></div>
-            <div class="relative text-center p-6 max-w-full sm:max-w-4xl mx-auto">
-                <h1 class="text-6xl sm:text-8xl font-display font-bold mb-4 tracking-tight" data-aos="fade-up" data-aos-delay="500">
-                    Sai Pallavi ❤️
-                </h1>
-                <p class="text-xl sm:text-2xl font-medium tracking-widest uppercase mb-8" data-aos="fade-up" data-aos-delay="700">
-                    Model | Actress
-                </p>
-                <a href="#portfolio" class="inline-block px-8 py-4 bg-accent hover:bg-rose-600 text-white font-semibold uppercase tracking-wider rounded-lg transition duration-300 shadow-xl" data-aos="fade-up" data-aos-delay="900">
-                    View Portfolio
-                </a>
-            </div>
-        </section>
-
-       <section id="about" class="py-20 lg:py-32 container mx-auto px-4">
-    <h2 class="text-4xl lg:text-5xl font-display font-bold text-center mb-16 text-text-dark dark:text-text-light" data-aos="fade-up">
+<section id="about" class="py-12 sm:py-20 lg:py-32 container mx-auto px-4">
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-center mb-8 sm:mb-12 lg:mb-16 text-text-dark dark:text-text-light" data-aos="fade-up">
         A Short Introduction
     </h2>
     
-    <div class="flex flex-col lg:flex-row gap-12 items-start max-w-6xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
         
         <div class="w-full lg:w-1/2" data-aos="fade-right">
             <img src="./Sai-Pallavi Horizontal.jpg" alt="Sai Pallvi photo 🫶🏼" class="w-full h-auto object-cover rounded-xl shadow-2xl">
         </div>
         
-        <div class="w-full lg:w-1/2 space-y-8" data-aos="fade-left" data-aos-delay="200">
-            <p class="text-xl leading-relaxed text-zinc-700 dark:text-zinc-300">
+        <div class="w-full lg:w-1/2 space-y-4 sm:space-y-6 lg:space-y-8" data-aos="fade-left" data-aos-delay="200">
+            <p class="text-base sm:text-lg lg:text-xl leading-relaxed text-zinc-700 dark:text-zinc-300">
                 Sai Pallavi is a dynamic creative professional based in Los Angeles, specializing in high-fashion editorial modeling and dramatic acting roles. With a deep commitment to storytelling, she transforms seamlessly between the lens and the stage. Her approach is rooted in authentic emotional connection, bringing complexity and nuance to every project she undertakes.
             </p>
-            <p class="text-xl leading-relaxed text-zinc-700 dark:text-zinc-300">
+            <p class="text-base sm:text-lg lg:text-xl leading-relaxed text-zinc-700 dark:text-zinc-300">
                 Her commitment to authenticity and emotional depth makes her one of the most respected artists in the industry today.
             </p>
 
-            <div class="pt-4 grid grid-cols-2 gap-4 text-lg font-medium">
-                <div class="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-                    <i class="fas fa-ruler-vertical text-accent mr-3"></i>
+            <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm sm:text-base lg:text-lg font-medium">
+                <div class="p-3 sm:p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+                    <i class="fas fa-ruler-vertical text-accent mr-2 sm:mr-3"></i>
                     <span class="text-zinc-700 dark:text-zinc-300">Height:</span> 5'2" (157 cm)
                 </div>
-                <div class="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-                    <i class="fas fa-map-marker-alt text-accent mr-3"></i>
+                <div class="p-3 sm:p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+                    <i class="fas fa-map-marker-alt text-accent mr-2 sm:mr-3"></i>
                     <span class="text-zinc-700 dark:text-zinc-300">Location:</span> Kotagiri, Tamil Nadu, India
                 </div>
-                <div class="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-                    <i class="fas fa-calendar-alt text-accent mr-3"></i>
+                <div class="p-3 sm:p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+                    <i class="fas fa-calendar-alt text-accent mr-2 sm:mr-3"></i>
                     <span class="text-zinc-700 dark:text-zinc-300">Age:</span> 33
                 </div>
-                <div class="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-                    <i class="fas fa-globe text-accent mr-3"></i>
+                <div class="p-3 sm:p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+                    <i class="fas fa-globe text-accent mr-2 sm:mr-3"></i>
                     <span class="text-zinc-700 dark:text-zinc-300">Languages:</span> Tamil, Hindi, Telugu, Malayalam, English, Georgian
                 </div>
             </div>
-            
-            <!-- <a href="https://placehold.co/400x100/F43F5E/FFFFFF?text=Download+Resume.pdf" download class="inline-block mt-4 px-6 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold rounded-lg transition duration-300">
-                Download Resume PDF <i class="fas fa-download ml-2"></i>
-            </a> -->
         </div>
     </div>
 </section>
@@ -214,47 +232,25 @@
                 </h2>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Gallery Item 1 -->
+                    <!-- Gallery Items - Using placeholders now that images are removed -->
                      <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./_ (1).jpeg" data-aos="zoom-in">
-                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./_ (1).jpeg" alt="Fashion Editorial Photo" class="w-full h-auto object-cover aspect-[3/4]">
+                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./_ (1).jpeg" alt="Fashion Editorial Photo">
                     </div>
-                    
-                    <!-- Gallery Item 2 -->
                         <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./b716f358-3168-4ca5-885d-28dbd6d1f8db.jpeg" data-aos="zoom-in">
-                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./b716f358-3168-4ca5-885d-28dbd6d1f8db.jpeg" alt="Fashion Editorial Photo" class="w-full h-auto object-cover aspect-[3/4]">
+                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./b716f358-3168-4ca5-885d-28dbd6d1f8db.jpeg" alt="Fashion Editorial Photo">
                     </div>
-
-                    <!-- Gallery Item 3 -->
                      <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Sai Pallavi (1).jpeg" data-aos="zoom-in" data-aos-delay="100">
                         <img src="./Sai Pallavi (1).jpeg" alt="Dramatic Portrait" class="w-full h-auto object-cover aspect-[3/4]">
                     </div>
-                    <!-- <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="https://placehold.co/1200x900/4B5563/FFFFFF?text=Commercial+Lifestyle" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="https://placehold.co/600x450/4B5563/FFFFFF?text=Photo+3" alt="Commercial Lifestyle Shoot" class="w-full h-auto object-cover aspect-[4/3]">
-                    </div> -->
-
-                    <!-- Gallery Item 4 -->
                      <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Sai Pallavi (2).jpeg" data-aos="zoom-in">
-                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./Sai Pallavi (2).jpeg" alt="Fashion Editorial Photo" class="w-full h-auto object-cover aspect-[3/4]">
+                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./Sai Pallavi (2).jpeg" alt="Fashion Editorial Photo">
                     </div>
-                    <!-- <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="https://placehold.co/900x1200/94A3B8/FFFFFF?text=Studio+Beauty" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="https://placehold.co/600x800/94A3B8/FFFFFF?text=Photo+4" alt="Studio Beauty Shot" class="w-full h-auto object-cover aspect-[3/4]">
-                    </div> -->
-
-                    <!-- Gallery Item 5 -->
                     <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Casual clothes from cotton street_.jpeg" data-aos="zoom-in" data-aos-delay="100">
                         <img src="./Casual clothes from cotton street_.jpeg" alt="Dramatic Portrait" class="w-full h-auto object-cover aspect-[3/4]">
                     </div>
-                    <!-- <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="https://placehold.co/1200x800/6D28D9/FFFFFF?text=Abstract+Art" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="./c5e4d019-0f16-4f0d-bc40-2dcc42298094.jpeg" alt="Abstract Art Collaboration" class="w-full h-auto object-cover aspect-[4/3]">
-                    </div> -->
-
-                    <!-- Gallery Item 6 -->
-                    <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Sai Pallavi experienced casting couch_ Sai….jpeg" data-aos="zoom-in">
-                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./Sai Pallavi experienced casting couch_ Sai….jpeg" alt="Fashion Editorial Photo" class="w-full h-auto object-cover aspect-[3/4]">
+                    <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Sai.jpeg" data-aos="zoom-in">
+                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./Sai.jpeg" alt="Fashion Editorial Photo">
                     </div>
-                    <!-- <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="https://placehold.co/800x1200/14B8A6/FFFFFF?text=Street+Style" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="https://placehold.co/600x800/14B8A6/FFFFFF?text=Photo+6" alt="Street Style Shoot" class="w-full h-auto object-cover aspect-[3/4]">
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -345,33 +341,34 @@
 </section>
         <!-- 7. Contact Section -->
         <section id="contact" class="py-20 lg:py-32 container mx-auto px-4">
+            <!-- Updated Header to use the Display font -->
             <h2 class="text-4xl lg:text-5xl font-display font-bold text-center mb-16 text-text-dark dark:text-text-light" data-aos="fade-up">
                 Bookings & Inquiries
             </h2>
             
-            <form id="contactForm" class="max-w-lg mx-auto p-8 rounded-xl shadow-2xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700" onsubmit="handleFormSubmit(event)" data-aos="fade-up" data-aos-delay="100">
+            <!-- Updated Form Card and Input Styles -->
+            <form id="contactForm" class="max-w-lg mx-auto p-8 rounded-xl shadow-2xl **bg-zinc-800 dark:bg-zinc-800** border border-zinc-700 dark:border-zinc-700" onsubmit="handleFormSubmit(event)" data-aos="fade-up" data-aos-delay="100">
                 <div class="mb-6">
-                    <label for="name" class="block text-lg font-medium mb-2">Name</label>
-                    <input type="text" id="name" name="name" required class="w-full p-3 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent dark:bg-zinc-700 dark:text-white transition duration-300">
+                    <label for="name" class="block text-lg font-medium mb-2 **text-white dark:text-white**">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full p-3 border border-zinc-600 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent **bg-zinc-700 dark:bg-zinc-700 text-white dark:text-white** transition duration-300">
                 </div>
                 <div class="mb-6">
-                    <label for="email" class="block text-lg font-medium mb-2">Email</label>
-                    <input type="email" id="email" name="email" required class="w-full p-3 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent dark:bg-zinc-700 dark:text-white transition duration-300">
+                    <label for="email" class="block text-lg font-medium mb-2 **text-white dark:text-white**">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full p-3 border border-zinc-600 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent **bg-zinc-700 dark:bg-zinc-700 text-white dark:text-white** transition duration-300">
                 </div>
                 <div class="mb-6">
-                    <label for="message" class="block text-lg font-medium mb-2">Message</label>
-                    <textarea id="message" name="message" rows="5" required class="w-full p-3 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent dark:bg-zinc-700 dark:text-white transition duration-300"></textarea>
+                    <label for="message" class="block text-lg font-medium mb-2 **text-white dark:text-white**">Message</label>
+                    <textarea id="message" name="message" rows="5" required class="w-full p-3 border border-zinc-600 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent **bg-zinc-700 dark:bg-zinc-700 text-white dark:text-white** transition duration-300"></textarea>
                 </div>
                 
                 <button type="submit" id="submitButton" class="w-full px-6 py-3 bg-accent hover:bg-rose-600 text-white font-semibold uppercase rounded-lg transition duration-300 shadow-lg">
-                    Send Inquiry
+                    SEND INQUIRY
                 </button>
 
                 <!-- Status Message Area -->
                 <div id="statusMessage" class="mt-4 p-3 hidden rounded-lg text-center font-medium"></div>
             </form>
         </section>
-
     </main>
 
     <!-- 8. Footer -->
