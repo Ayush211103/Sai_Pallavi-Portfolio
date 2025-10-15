@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Tags -->
+    <title>Sai Pallavi | Model & Actress Portfolio</title>
+    <meta name="description" content="Official portfolio for Sai Pallavi: talented actress and beloved personality. View gallery, showreel, and book for projects.">
+    <meta name="keywords" content="Sai Pallavi, actress, portfolio, films, movies, awards, acting, cinema, performances">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Sai Pallavi | Model & Actress Portfolio">
+    <meta property="og:description" content="Professional portfolio showcasing modeling and acting work.">
+    <!-- Placeholder for Open Graph Image - Replace with a real URL -->
+    <meta property="og:image" content="https://placehold.co/1200x630/27272a/ffffff?text=Elara+Vance+Portfolio">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon Placeholder -->
+    <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>"> -->
+    <!-- <link rel="icon" href="./sai_favicon-removebg-preview.png" type="image/png"> -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫶🏼</text></svg>">
+
+
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Load AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind Configuration (Custom Fonts & Colors) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode using 'dark' class
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-light': '#FFFBEB', // Subtle Cream
+                        'primary-dark': '#18181B',  // Zinc 900
+                        'text-dark': '#27272A',     // Zinc 800
+                        'text-light': '#F4F4F5',    // Zinc 100
+                        'accent': '#F43F5E',        // Rose 500 (Elegant Red)
+                    },
+                    fontFamily: {
+                        // Elegant display font for headings
+                        'display': ['"Playfair Display"', 'serif'],
+                        // Modern sans-serif for body text
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        // Placeholder for Hero image - replace URL
+                        // 'hero-img': "./Sai-Pallavi Horizontal.jpg",
+                    }
+                },
+            }
+        }
+    </script>
+    <!-- Load Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom CSS for smooth scroll and styling */
+        .scrolled {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            background-color: var(--header-bg);
+            backdrop-filter: blur(8px);
+        }
+        .dark .scrolled {
+            background-color: rgba(24, 24, 27, 0.8); /* Opaque dark background */
+        }
+        .light .scrolled {
+            background-color: rgba(255, 251, 235, 0.9); /* Opaque light background */
+        }
+        
+        /* Ensures fluid video embed */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Gallery item hover effect */
+        .gallery-item {
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            filter: brightness(0.85);
+        }
+    </style>
+</head>
+
+<body class="bg-primary-light text-text-dark dark:bg-primary-dark dark:text-text-light font-sans transition-colors duration-500">
+
+    <!-- Sticky Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo/Name -->
+            <a href="#hero" class="text-3xl font-display font-semibold bg-gray-300 rounded inline-block  text-accent tracking-wider">
+                <img src="./sai pallavi autograph.png" alt="Sai Pallavi Logo" class="h-10 inline-block mr-2">            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 text-lg font-medium ml-auto mr-8">
+                <a href="#about" class="hover:text-accent transition duration-300">About</a>
+                <a href="#portfolio" class="hover:text-accent transition duration-300">Gallery</a>
+                <a href="#showreel" class="hover:text-accent transition duration-300">Showreel</a>
+                <a href="#achievements" class="hover:text-accent transition duration-300">Work</a>
+                <a href="#contact" class="hover:text-accent transition duration-300">Contact</a>
+            </nav>
+
+            <!-- Menu Button & Dark Mode Toggle -->
+            <div class="flex items-center space-x-4">
+                <button id="modeToggle" class="p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition duration-300" aria-label="Toggle dark and light mode">
+                    <!-- Icon will be set by JS -->
+                    <i id="modeIcon" class="fas fa-sun text-xl"></i>
+                </button>
+                <button id="menuToggle" class="md:hidden p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition duration-300" aria-label="Open mobile menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <nav id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-primary-light dark:bg-primary-dark shadow-lg transition-all duration-300 p-4 border-t border-zinc-200 dark:border-zinc-700">
+            <a href="#about" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">About</a>
+            <a href="#portfolio" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Gallery</a>
+            <a href="#showreel" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Showreel</a>
+            <a href="#achievements" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Work</a>
+            <a href="#contact" class="block py-2 text-lg hover:text-accent transition duration-300" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero" class="relative h-screen flex items-end p-20 justify-center bg-hero-img bg-cover bg-center text-white" data-aos="fade">
+            <img src="./_.jpeg" alt="Sai Pallavi Hero Shot" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <div class="relative text-center p-6 max-w-full sm:max-w-4xl mx-auto">
+                <h1 class="text-6xl sm:text-8xl font-display font-bold mb-4 tracking-tight" data-aos="fade-up" data-aos-delay="500">
+                    Sai Pallavi ❤️
+                </h1>
+                <p class="text-xl sm:text-2xl font-medium tracking-widest uppercase mb-8" data-aos="fade-up" data-aos-delay="700">
+                    Model | Actress
+                </p>
+                <a href="#portfolio" class="inline-block px-8 py-4 bg-accent hover:bg-rose-600 text-white font-semibold uppercase tracking-wider rounded-lg transition duration-300 shadow-xl" data-aos="fade-up" data-aos-delay="900">
+                    View Portfolio
+                </a>
+            </div>
+        </section>
+
+       <section id="about" class="py-20 lg:py-32 container mx-auto px-4">
+    <h2 class="text-4xl lg:text-5xl font-display font-bold text-center mb-16 text-text-dark dark:text-text-light" data-aos="fade-up">
+        A Short Introduction
+    </h2>
+    
+    <div class="flex flex-col lg:flex-row gap-12 items-start max-w-6xl mx-auto">
+        
+        <div class="w-full lg:w-1/2" data-aos="fade-right">
+            <img src="./Sai-Pallavi Horizontal.jpg" alt="Sai Pallvi photo 🫶🏼" class="w-full h-auto object-cover rounded-xl shadow-2xl">
+        </div>
+        
+        <div class="w-full lg:w-1/2 space-y-8" data-aos="fade-left" data-aos-delay="200">
+            <p class="text-xl leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Sai Pallavi is a dynamic creative professional based in Los Angeles, specializing in high-fashion editorial modeling and dramatic acting roles. With a deep commitment to storytelling, she transforms seamlessly between the lens and the stage. Her approach is rooted in authentic emotional connection, bringing complexity and nuance to every project she undertakes.
+            </p>
+            <p class="text-xl leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Her commitment to authenticity and emotional depth makes her one of the most respected artists in the industry today.
+            </p>
+
+            <div class="pt-4 grid grid-cols-2 gap-4 text-lg font-medium">
+                <div class="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+                    <i class="fas fa-ruler-vertical text-accent mr-3"></i>
+                    <span class="text-zinc-700 dark:text-zinc-300">Height:</span> 5'2" (157 cm)
+                </div>
+                <div class="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+                    <i class="fas fa-map-marker-alt text-accent mr-3"></i>
+                    <span class="text-zinc-700 dark:text-zinc-300">Location:</span> Kotagiri, Tamil Nadu, India
+                </div>
+                <div class="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+                    <i class="fas fa-calendar-alt text-accent mr-3"></i>
+                    <span class="text-zinc-700 dark:text-zinc-300">Age:</span> 33
+                </div>
+                <div class="p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+                    <i class="fas fa-globe text-accent mr-3"></i>
+                    <span class="text-zinc-700 dark:text-zinc-300">Languages:</span> Tamil, Hindi, Telugu, Malayalam, English, Georgian
+                </div>
+            </div>
+            
+            <!-- <a href="https://placehold.co/400x100/F43F5E/FFFFFF?text=Download+Resume.pdf" download class="inline-block mt-4 px-6 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold rounded-lg transition duration-300">
+                Download Resume PDF <i class="fas fa-download ml-2"></i>
+            </a> -->
+        </div>
+    </div>
+</section>
+
+        <!-- 3. Portfolio / Gallery Section -->
+        <section id="portfolio" class="py-20 lg:py-32 bg-zinc-50 dark:bg-zinc-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-center mb-16 text-text-dark dark:text-text-light" data-aos="fade-up">
+                    Modeling Gallery
+                </h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Gallery Item 1 -->
+                     <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./_ (1).jpeg" data-aos="zoom-in">
+                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./_ (1).jpeg" alt="Fashion Editorial Photo" class="w-full h-auto object-cover aspect-[3/4]">
+                    </div>
+                    
+                    <!-- Gallery Item 2 -->
+                        <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./b716f358-3168-4ca5-885d-28dbd6d1f8db.jpeg" data-aos="zoom-in">
+                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./b716f358-3168-4ca5-885d-28dbd6d1f8db.jpeg" alt="Fashion Editorial Photo" class="w-full h-auto object-cover aspect-[3/4]">
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                     <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Sai Pallavi (1).jpeg" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="./Sai Pallavi (1).jpeg" alt="Dramatic Portrait" class="w-full h-auto object-cover aspect-[3/4]">
+                    </div>
+                    <!-- <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="https://placehold.co/1200x900/4B5563/FFFFFF?text=Commercial+Lifestyle" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://placehold.co/600x450/4B5563/FFFFFF?text=Photo+3" alt="Commercial Lifestyle Shoot" class="w-full h-auto object-cover aspect-[4/3]">
+                    </div> -->
+
+                    <!-- Gallery Item 4 -->
+                     <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Sai Pallavi (2).jpeg" data-aos="zoom-in">
+                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./Sai Pallavi (2).jpeg" alt="Fashion Editorial Photo" class="w-full h-auto object-cover aspect-[3/4]">
+                    </div>
+                    <!-- <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="https://placehold.co/900x1200/94A3B8/FFFFFF?text=Studio+Beauty" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="https://placehold.co/600x800/94A3B8/FFFFFF?text=Photo+4" alt="Studio Beauty Shot" class="w-full h-auto object-cover aspect-[3/4]">
+                    </div> -->
+
+                    <!-- Gallery Item 5 -->
+                    <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Casual clothes from cotton street_.jpeg" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="./Casual clothes from cotton street_.jpeg" alt="Dramatic Portrait" class="w-full h-auto object-cover aspect-[3/4]">
+                    </div>
+                    <!-- <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="https://placehold.co/1200x800/6D28D9/FFFFFF?text=Abstract+Art" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="./c5e4d019-0f16-4f0d-bc40-2dcc42298094.jpeg" alt="Abstract Art Collaboration" class="w-full h-auto object-cover aspect-[4/3]">
+                    </div> -->
+
+                    <!-- Gallery Item 6 -->
+                    <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="./Sai Pallavi experienced casting couch_ Sai….jpeg" data-aos="zoom-in">
+                        <img class="w-full h-auto object-cover aspect-[3/4] mx-auto" src="./Sai Pallavi experienced casting couch_ Sai….jpeg" alt="Fashion Editorial Photo" class="w-full h-auto object-cover aspect-[3/4]">
+                    </div>
+                    <!-- <div class="rounded-xl overflow-hidden shadow-xl gallery-item" data-src="https://placehold.co/800x1200/14B8A6/FFFFFF?text=Street+Style" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="https://placehold.co/600x800/14B8A6/FFFFFF?text=Photo+6" alt="Street Style Shoot" class="w-full h-auto object-cover aspect-[3/4]">
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-[9999] hidden flex items-center justify-center p-4 transition-opacity duration-300" onclick="closeLightbox(event)">
+            <div class="relative max-w-7xl max-h-full">
+                <img id="lightboxImage" src="" alt="Full size photo" class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl object-contain">
+                <button onclick="closeLightbox(event)" class="absolute top-4 right-4 text-white text-3xl p-2 hover:text-accent transition duration-300 focus:outline-none" aria-label="Close Lightbox">
+                    &times;
+                </button>
+            </div>
+        </div>
+
+        <!-- 4. Video Section (Showreel) -->
+        <section id="showreel" class="py-20 lg:py-32 container mx-auto px-4">
+            <h2 class="text-4xl lg:text-5xl font-display font-bold text-center mb-16 text-text-dark dark:text-text-light" data-aos="fade-up">
+                Acting Showreel
+            </h2>
+            <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/6jBEzTbanUc" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen 
+            title="Sai Pallavi Movie Trailer (Placeholder)">
+        </iframe>
+    </div>
+    <p class="text-center mt-6 text-lg text-zinc-600 dark:text-zinc-400">
+        Sai Pallavi's latest movie trailer is featured above.
+    </p>
+</div>
+        </section>
+
+        <section id="achievements" class="py-20 lg:py-32 bg-zinc-50 dark:bg-zinc-900">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl lg:text-5xl font-display font-bold text-center mb-16 text-text-dark dark:text-text-light" data-aos="fade-up">
+            Recognition & Achievements
+        </h2>
+
+        <div class="flex flex-col lg:flex-row gap-12">
+            <div class="lg:w-1/2" data-aos="fade-right">
+                <h3 class="text-3xl font-display font-semibold mb-6 border-b border-accent pb-2">Key Roles & Honors</h3>
+                <ul class="space-y-4 text-lg">
+                    <li class="flex items-center">
+                        <i class="fas fa-medal text-accent mr-3"></i>
+                        6x Filmfare Awards South (Winner, Best Actress/Debut)
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-star text-accent mr-3"></i>
+                        Forbes India '30 Under 30' (Featured in 2020)
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-trophy text-accent mr-3"></i>
+                        Kalaimamani Award (Honored by the Govt. of Tamil Nadu)
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-film text-accent mr-3"></i>
+                        Malar in Premam (Breakthrough Role, Malayalam Cinema)
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-female text-accent mr-3"></i>
+                        Gargi & Virata Parvam (Acclaimed performances in Women-centric cinema)
+                    </li>
+                </ul>
+            </div>
+
+            <div class="lg:w-1/2" data-aos="fade-left">
+                <h3 class="text-3xl font-display font-semibold mb-6 border-b border-accent pb-2">Industry Voices</h3>
+                <div class="space-y-8">
+                    <blockquote class="p-6 bg-white dark:bg-zinc-800 rounded-xl shadow-lg border-l-4 border-accent">
+                        <p class="text-xl italic mb-3">
+                            "Her performance in 'Fidaa' is one of the 100 Greatest Performances of the Decade in South Indian Cinema."
+                        </p>
+                        <footer class="font-semibold text-accent">- Film Companion</footer>
+                    </blockquote>
+                    <blockquote class="p-6 bg-white dark:bg-zinc-800 rounded-xl shadow-lg border-l-4 border-accent">
+                        <p class="text-xl italic mb-3">
+                            "Sai Pallavi possesses the rare gift of owning the scene with raw honesty. She transforms seamlessly into the character."
+                        </p>
+                        <footer class="font-semibold text-accent">- Leading Film Critic</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- 7. Contact Section -->
+        <section id="contact" class="py-20 lg:py-32 container mx-auto px-4">
+            <h2 class="text-4xl lg:text-5xl font-display font-bold text-center mb-16 text-text-dark dark:text-text-light" data-aos="fade-up">
+                Bookings & Inquiries
+            </h2>
+            
+            <form id="contactForm" class="max-w-lg mx-auto p-8 rounded-xl shadow-2xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700" onsubmit="handleFormSubmit(event)" data-aos="fade-up" data-aos-delay="100">
+                <div class="mb-6">
+                    <label for="name" class="block text-lg font-medium mb-2">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full p-3 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent dark:bg-zinc-700 dark:text-white transition duration-300">
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block text-lg font-medium mb-2">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full p-3 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent dark:bg-zinc-700 dark:text-white transition duration-300">
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-lg font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" required class="w-full p-3 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-accent focus:border-accent dark:bg-zinc-700 dark:text-white transition duration-300"></textarea>
+                </div>
+                
+                <button type="submit" id="submitButton" class="w-full px-6 py-3 bg-accent hover:bg-rose-600 text-white font-semibold uppercase rounded-lg transition duration-300 shadow-lg">
+                    Send Inquiry
+                </button>
+
+                <!-- Status Message Area -->
+                <div id="statusMessage" class="mt-4 p-3 hidden rounded-lg text-center font-medium"></div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- 8. Footer -->
+    <footer class="bg-text-dark dark:bg-black text-zinc-300 py-12">
+        <div class="container mx-auto px-4 text-center">
+            
+            <div class="flex justify-center space-x-6 mb-8 text-3xl">
+                <!-- Instagram -->
+                <a href="https://instagram.com/saipallavi.senthamarai" target="_blank" aria-label="Instagram" class="hover:text-accent transition duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- IMDb -->
+                <a href="https://www.imdb.com/name/nm7367695/" target="_blank" aria-label="IMDb" class="hover:text-accent transition duration-300">
+                    <i class="fab fa-imdb"></i>
+                </a>
+                <!-- Twitter -->
+                 <a href="https://twitter.com/Sai_Pallavi92" target="_blank" aria-label="Twitter/X" class="hover:text-accent transition duration-300">
+                    <i class="fab fa-twitter"></i> </a>
+
+                <!-- YouTube -->
+                <!-- <a href="https://youtube.com/elara-vance" target="_blank" aria-label="YouTube" class="hover:text-accent transition duration-300">
+                    <i class="fab fa-youtube"></i>
+                </a> -->
+
+                <!-- Contact (Email Icon) -->
+                <a href="mailto:saipallavi@demo.com" aria-label="Email for Booking" class="hover:text-accent transition duration-300">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <p class="text-sm">
+                &copy; <span id="currentYear"></span> Sai Pallavi 💕 . All Rights Reserved.
+            </p>
+            <p class="text-xs mt-2 text-zinc-500">
+                *Mock content for demonstration purposes.
+            </p>
+        </div>
+    </footer>
+
+    <!-- AOS Initialization Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // --- Dark Mode Logic ---
+            const modeToggle = document.getElementById('modeToggle');
+            const modeIcon = document.getElementById('modeIcon');
+            const html = document.documentElement;
+
+            // Check system preference or localStorage on load
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+                modeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.remove('dark');
+                modeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+
+            modeToggle.addEventListener('click', () => {
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    localStorage.theme = 'dark'; // Corrected to save dark mode
+                    modeIcon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    html.classList.add('dark');
+                    localStorage.theme = 'dark';
+                    modeIcon.classList.replace('fa-sun', 'fa-moon');
+                }
+            });
+
+            // --- Sticky Header Logic ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // --- Lightbox / Gallery Logic ---
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const src = item.getAttribute('data-src');
+                    lightboxImage.src = src;
+                    lightbox.classList.remove('hidden');
+                    // Prevent scrolling the body when lightbox is open
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close lightbox function (used by button and background click)
+            window.closeLightbox = (event) => {
+                // Only close if clicking the lightbox itself or the close button
+                if (event.target === lightbox || event.target.closest('button')) {
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }
+            };
+        });
+
+        // --- Contact Form Submission Logic (Connects to Node/Express Mock) ---
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const statusMessage = document.getElementById('statusMessage');
+            const submitButton = document.getElementById('submitButton');
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Set loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            statusMessage.classList.remove('hidden', 'bg-red-200', 'text-red-800', 'bg-green-200', 'text-green-800');
+            statusMessage.classList.add('bg-zinc-200', 'text-zinc-800');
+            statusMessage.textContent = 'Attempting to send message to backend...';
+
+            // NOTE: Must match the port and route defined in server.js
+            const API_URL = 'http://localhost:3000/api/contact'; 
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Success!
+                    statusMessage.classList.replace('bg-zinc-200', 'bg-green-200');
+                    statusMessage.classList.replace('text-zinc-800', 'text-green-800');
+                    statusMessage.textContent = result.message || 'Thank you! Your inquiry has been sent successfully and saved.';
+                    form.reset();
+                } else {
+                    // Server responded with an error (e.g., 400 Bad Request)
+                    throw new Error(result.message || 'Server error. Please check backend status.');
+                }
+
+            } catch (error) {
+                console.error('Submission Error:', error);
+                // Handle network error or server error response
+                statusMessage.classList.replace('bg-zinc-200', 'bg-red-200');
+                statusMessage.classList.replace('text-zinc-800', 'text-red-800');
+                statusMessage.textContent = `Error: ${error.message}. Is the Node.js server running on localhost:3000?`;
+            } finally {
+                // Restore submit button state
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Inquiry';
+            }
+        }
+    </script>
+
+</body>
+</html>
